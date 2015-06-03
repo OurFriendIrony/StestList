@@ -10,17 +10,17 @@ public class StestList {
     }
 
     public void add(String item) {
-        if (listIsEmpty()) {
+        if (thisNodeIsUsed()) {
+            nextItem.add(item);
+        } else {
             this.item = item;
             nextItem = new StestList();
-        } else {
-            nextItem.add(item);
         }
         size+=1;
     }
 
-    private boolean listIsEmpty() {
-        return this.item == null;
+    private boolean thisNodeIsUsed() {
+        return this.item != null;
     }
 
     public String get(int i) {
