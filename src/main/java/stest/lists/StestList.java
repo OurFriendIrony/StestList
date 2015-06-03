@@ -29,19 +29,18 @@ public class StestList {
 
     public void remove(int pos) {
         if (itemFound(pos)) {
-            this.item = nextItem.item;
-            this.nextItem = nextItem.nextItem;
+            removeThisNode();
         } else {
-            nextItem.remove(pos-1);
+            removeNextNode(pos);
         }
-    }
-
-    private boolean itemFound(int pos) {
-        return pos == 0;
     }
 
     private boolean thisNodeIsUsed() {
         return this.item != null;
+    }
+
+    private boolean itemFound(int pos) {
+        return pos == 0;
     }
 
     private void addToThisNode(String item) {
@@ -51,5 +50,14 @@ public class StestList {
 
     private void addToNextNode(String item) {
         nextItem.add(item);
+    }
+
+    private void removeThisNode() {
+        this.item = nextItem.item;
+        this.nextItem = nextItem.nextItem;
+    }
+
+    private void removeNextNode(int pos) {
+        nextItem.remove(pos-1);
     }
 }
