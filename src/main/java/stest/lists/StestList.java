@@ -12,8 +12,10 @@ public class StestList {
     public void add(String item) {
         if (this.item == null) {
             this.item = item;
-        } else {
+        } else if (nextItem == null){
             nextItem = new StestList();
+            nextItem.add(item);
+        } else {
             nextItem.add(item);
         }
         size+=1;

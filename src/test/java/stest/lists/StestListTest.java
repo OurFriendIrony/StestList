@@ -39,4 +39,14 @@ public class StestListTest {
         assertThat(list.get(0)).isEqualTo("first");
         assertThat(list.get(1)).isEqualTo("second");
     }
+
+    @Test
+    public void thirdAddedItemRetrievable() {
+        list.add("first");
+        list.add("second");
+        list.add("third");
+        assertThat(list.get(0)).isEqualTo("first");
+        assertThat(list.get(1)).isEqualTo("second");
+        assertThat(list.get(2)).isEqualTo("third");
+    }
 }
