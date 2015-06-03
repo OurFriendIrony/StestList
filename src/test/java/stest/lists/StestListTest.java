@@ -17,4 +17,11 @@ public class StestListTest {
         list.add("");
         assertThat(list.size()).isEqualTo(1);
     }
+
+    @Test
+    public void addedItemRetrievable() {
+        StestList list = new StestList();
+        list.add("wibble");
+        assertThat(list.get(0)).isEqualTo("wibble");
+    }
 }
