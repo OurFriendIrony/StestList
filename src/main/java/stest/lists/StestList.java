@@ -7,29 +7,37 @@ public class StestList {
 
     public int size() {
         if (thisNodeIsUsed()) {
-            return nextItem.size()+1;
+            return nextItem.size() + 1;
         }
         return 0;
     }
 
     public void add(String item) {
         if (thisNodeIsUsed()) {
-            nextItem.add(item);
+            addToNextNode(item);
         } else {
-            this.item = item;
-            nextItem = new StestList();
+            addToThisNode(item);
         }
     }
 
-    public String get(int i) {
-        if (i ==0 ) {
+    public String get(int pos) {
+        if (pos == 0) {
             return item;
-        }else {
-            return nextItem.get(i-1);
+        } else {
+            return nextItem.get(pos-1);
         }
     }
 
     private boolean thisNodeIsUsed() {
         return this.item != null;
+    }
+
+    private void addToThisNode(String item) {
+        this.item = item;
+        nextItem = new StestList();
+    }
+
+    private void addToNextNode(String item) {
+        nextItem.add(item);
     }
 }
