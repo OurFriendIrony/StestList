@@ -10,15 +10,17 @@ public class StestList {
     }
 
     public void add(String item) {
-        if (this.item == null) {
+        if (listIsEmpty()) {
             this.item = item;
-        } else if (nextItem == null){
             nextItem = new StestList();
-            nextItem.add(item);
         } else {
             nextItem.add(item);
         }
         size+=1;
+    }
+
+    private boolean listIsEmpty() {
+        return this.item == null;
     }
 
     public String get(int i) {

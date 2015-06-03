@@ -11,7 +11,6 @@ public class StestListTest {
 
     @Before
     public void setup() {
-
         list = new StestList();
     }
 
