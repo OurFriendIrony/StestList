@@ -6,7 +6,10 @@ public class StestList {
     private StestList nextItem;
 
     public int size() {
-        return size;
+        if (thisNodeIsUsed()) {
+            return nextItem.size()+1;
+        }
+        return 0;
     }
 
     public void add(String item) {
@@ -16,11 +19,6 @@ public class StestList {
             this.item = item;
             nextItem = new StestList();
         }
-        size+=1;
-    }
-
-    private boolean thisNodeIsUsed() {
-        return this.item != null;
     }
 
     public String get(int i) {
@@ -29,5 +27,9 @@ public class StestList {
         }else {
             return nextItem.get(i-1);
         }
+    }
+
+    private boolean thisNodeIsUsed() {
+        return this.item != null;
     }
 }
