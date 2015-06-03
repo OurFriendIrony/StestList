@@ -1,7 +1,13 @@
 package stest.lists;
 
 public class StestList {
+    private int size;
+
     public int size() {
-        return 0;
+        return size;
+    }
+
+    public void add(String s) {
+        size+=1;
     }
 }
