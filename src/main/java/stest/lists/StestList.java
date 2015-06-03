@@ -21,11 +21,14 @@ public class StestList {
     }
 
     public String get(int pos) {
-        if (pos == 0) {
-            return item;
-        } else {
+        if (checkNextItem(pos)) {
             return nextItem.get(pos-1);
         }
+        return item;
+    }
+
+    private boolean checkNextItem(int pos) {
+        return pos != 0;
     }
 
     private boolean thisNodeIsUsed() {
@@ -34,7 +37,7 @@ public class StestList {
 
     private void addToThisNode(String item) {
         this.item = item;
-        nextItem = new StestList();
+        this.nextItem = new StestList();
     }
 
     private void addToNextNode(String item) {
