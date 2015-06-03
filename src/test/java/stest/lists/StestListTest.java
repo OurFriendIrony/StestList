@@ -1,27 +1,42 @@
 package stest.lists;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class StestListTest {
 
+    StestList list;
+
+    @Before
+    public void setup() {
+
+        list = new StestList();
+    }
+
     @Test
     public void listSizeZeroWhenListEmpty() {
-        assertThat(new StestList().size()).isEqualTo(0);
+        assertThat(list.size()).isEqualTo(0);
     }
 
     @Test
     public void listSizeOneWhenItemAdded() {
-        StestList list = new StestList();
         list.add("");
         assertThat(list.size()).isEqualTo(1);
     }
 
     @Test
     public void addedItemRetrievable() {
-        StestList list = new StestList();
         list.add("wibble");
         assertThat(list.get(0)).isEqualTo("wibble");
+    }
+
+    @Test
+    public void secondAddedItemRetrievable() {
+        list.add("first");
+        list.add("second");
+        assertThat(list.get(0)).isEqualTo("first");
+        assertThat(list.get(1)).isEqualTo("second");
     }
 }
