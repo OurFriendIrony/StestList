@@ -1,9 +1,9 @@
 package stest.lists;
 
 public class StestList {
-    private int size;
-    private String item;
-    private StestList nextItem;
+
+    public String item;
+    public StestList nextItem;
 
     public int size() {
         if (thisNodeIsUsed()) {
@@ -21,14 +21,23 @@ public class StestList {
     }
 
     public String get(int pos) {
-        if (checkNextItem(pos)) {
-            return nextItem.get(pos-1);
+        if (itemFound(pos)) {
+            return item;
         }
-        return item;
+        return nextItem.get(pos-1);
     }
 
-    private boolean checkNextItem(int pos) {
-        return pos != 0;
+    public void remove(int pos) {
+        if (itemFound(pos)) {
+            this.item = nextItem.item;
+            this.nextItem = nextItem.nextItem;
+        } else {
+            nextItem.remove(pos-1);
+        }
+    }
+
+    private boolean itemFound(int pos) {
+        return pos == 0;
     }
 
     private boolean thisNodeIsUsed() {

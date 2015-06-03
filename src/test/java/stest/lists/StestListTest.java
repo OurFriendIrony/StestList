@@ -48,4 +48,15 @@ public class StestListTest {
         assertThat(list.get(1)).isEqualTo("second");
         assertThat(list.get(2)).isEqualTo("third");
     }
+
+    @Test
+    public void removalOfItemResizesArray() {
+        list.add("first");
+        list.add("second");
+        list.add("third");
+        list.remove(1);
+        assertThat(list.get(0)).isEqualTo("first");
+        assertThat(list.get(1)).isEqualTo("third");
+        assertThat(list.size()).isEqualTo(2);
+    }
 }
