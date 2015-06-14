@@ -1,34 +1,33 @@
 package stest.lists;
 
-public class StestList {
-
-    public String item;
-    public StestList nextItem;
+public class StestList<T> {
+    public T value;
+    public StestList<T> nextNode;
 
     public int size() {
         if (thisNodeIsUsed()) {
-            return nextItem.size() + 1;
+            return nextNode.size() + 1;
         }
         return 0;
     }
 
-    public void add(String item) {
+    public void add(T value) {
         if (thisNodeIsUsed()) {
-            addToNextNode(item);
+            addToNextNode(value);
         } else {
-            addToThisNode(item);
+            addToThisNode(value);
         }
     }
 
-    public String get(int pos) {
-        if (itemFound(pos)) {
-            return item;
+    public T get(int pos) {
+        if (valueFound(pos)) {
+            return value;
         }
-        return nextItem.get(pos-1);
+        return nextNode.get(pos - 1);
     }
 
     public void remove(int pos) {
-        if (itemFound(pos)) {
+        if (valueFound(pos)) {
             removeThisNode();
         } else {
             removeNextNode(pos);
@@ -36,28 +35,40 @@ public class StestList {
     }
 
     private boolean thisNodeIsUsed() {
-        return this.item != null;
+        return this.value != null;
     }
 
-    private boolean itemFound(int pos) {
+    private boolean valueFound(int pos) {
         return pos == 0;
     }
 
-    private void addToThisNode(String item) {
-        this.item = item;
-        this.nextItem = new StestList();
+    private void addToThisNode(T value) {
+        this.value = value;
+        this.nextNode = new StestList<>();
     }
 
-    private void addToNextNode(String item) {
-        nextItem.add(item);
+    private void addToNextNode(T value) {
+        nextNode.add(value);
     }
 
     private void removeThisNode() {
-        this.item = nextItem.item;
-        this.nextItem = nextItem.nextItem;
+        this.value = getNextNodeValue();
+        this.nextNode = getNextNode();
+    }
+
+    private StestList<T> getNextNode() {
+        return nextNode.nextNode;
+    }
+
+    private T getNextNodeValue() {
+        return nextNode.value;
     }
 
     private void removeNextNode(int pos) {
-        nextItem.remove(pos-1);
+        nextNode.remove(pos - 1);
+    }
+
+    public Object type() {
+        return value.getClass();
     }
 }

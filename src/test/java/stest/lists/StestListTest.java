@@ -7,56 +7,70 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class StestListTest {
 
-    StestList list;
+    StestList<String> stringList;
+    StestList<Integer> integerList;
 
     @Before
     public void setup() {
-        list = new StestList();
+        stringList = new StestList<>();
+        integerList = new StestList<>();
     }
 
     @Test
     public void listSizeZeroWhenListEmpty() {
-        assertThat(list.size()).isEqualTo(0);
+        assertThat(stringList.size()).isEqualTo(0);
     }
 
     @Test
     public void listSizeOneWhenItemAdded() {
-        list.add("");
-        assertThat(list.size()).isEqualTo(1);
+        stringList.add("");
+        assertThat(stringList.size()).isEqualTo(1);
     }
 
     @Test
     public void addedItemRetrievable() {
-        list.add("wibble");
-        assertThat(list.get(0)).isEqualTo("wibble");
+        stringList.add("wibble");
+        assertThat(stringList.get(0)).isEqualTo("wibble");
     }
 
     @Test
     public void secondAddedItemRetrievable() {
-        list.add("first");
-        list.add("second");
-        assertThat(list.get(0)).isEqualTo("first");
-        assertThat(list.get(1)).isEqualTo("second");
+        stringList.add("first");
+        stringList.add("second");
+        assertThat(stringList.get(0)).isEqualTo("first");
+        assertThat(stringList.get(1)).isEqualTo("second");
     }
 
     @Test
     public void thirdAddedItemRetrievable() {
-        list.add("first");
-        list.add("second");
-        list.add("third");
-        assertThat(list.get(0)).isEqualTo("first");
-        assertThat(list.get(1)).isEqualTo("second");
-        assertThat(list.get(2)).isEqualTo("third");
+        stringList.add("first");
+        stringList.add("second");
+        stringList.add("third");
+        assertThat(stringList.get(0)).isEqualTo("first");
+        assertThat(stringList.get(1)).isEqualTo("second");
+        assertThat(stringList.get(2)).isEqualTo("third");
     }
 
     @Test
     public void removalOfItemResizesArray() {
-        list.add("first");
-        list.add("second");
-        list.add("third");
-        list.remove(1);
-        assertThat(list.get(0)).isEqualTo("first");
-        assertThat(list.get(1)).isEqualTo("third");
-        assertThat(list.size()).isEqualTo(2);
+        stringList.add("first");
+        stringList.add("second");
+        stringList.add("third");
+        stringList.remove(1);
+        assertThat(stringList.get(0)).isEqualTo("first");
+        assertThat(stringList.get(1)).isEqualTo("third");
+        assertThat(stringList.size()).isEqualTo(2);
+    }
+
+    @Test
+    public void addedItemsCanBeOfTypeString() {
+        stringList.add("");
+        assertThat(stringList.type()).isEqualTo(String.class);
+    }
+
+    @Test
+    public void addedItemsCanBeOfTypeInteger() {
+        integerList.add(1);
+        assertThat(integerList.type()).isEqualTo(Integer.class);
     }
 }
