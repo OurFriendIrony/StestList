@@ -1,4 +1,4 @@
-package stest.lists;
+package uk.co.ourfriendirony.list;
 
 import org.junit.Before;
 import org.junit.Test;

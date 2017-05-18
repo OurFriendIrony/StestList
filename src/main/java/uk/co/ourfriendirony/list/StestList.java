@@ -1,4 +1,4 @@
-package stest.lists;
+package uk.co.ourfriendirony.list;
 
 public class StestList<T> {
     public T value;
